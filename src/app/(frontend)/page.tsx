@@ -1,3 +1,4 @@
+"use client"
 import { headers as getHeaders } from 'next/headers.js'
 import Image from 'next/image'
 import { getPayload } from 'payload'
