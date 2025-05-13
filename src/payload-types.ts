@@ -86,7 +86,7 @@ export interface Config {
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
   db: {
-    defaultIDType: number;
+    defaultIDType: string;
   };
   globals: {};
   globalsSelect: {};
@@ -122,7 +122,7 @@ export interface UserAuthOperations {
  * via the `definition` "users".
  */
 export interface User {
-  id: number;
+  id: string;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -139,7 +139,7 @@ export interface User {
  * via the `definition` "media".
  */
 export interface Media {
-  id: number;
+  id: string;
   alt: string;
   updatedAt: string;
   createdAt: string;
@@ -158,10 +158,10 @@ export interface Media {
  * via the `definition` "cap-category".
  */
 export interface CapCategory {
-  id: number;
+  id: string;
   name: string;
   description?: string | null;
-  image?: (number | null) | Media;
+  image?: (string | null) | Media;
   /**
    * Select an image from the media library or provide a URL.
    */
@@ -194,7 +194,7 @@ export interface Cap {
         id?: string | null;
       }[]
     | null;
-  category: number | CapCategory;
+  category: string | CapCategory;
   inStock?: boolean | null;
   updatedAt: string;
   createdAt: string;
@@ -204,19 +204,19 @@ export interface Cap {
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
-  id: number;
+  id: string;
   document?:
     | ({
         relationTo: 'users';
-        value: number | User;
+        value: string | User;
       } | null)
     | ({
         relationTo: 'media';
-        value: number | Media;
+        value: string | Media;
       } | null)
     | ({
         relationTo: 'cap-category';
-        value: number | CapCategory;
+        value: string | CapCategory;
       } | null)
     | ({
         relationTo: 'caps';
@@ -225,7 +225,7 @@ export interface PayloadLockedDocument {
   globalSlug?: string | null;
   user: {
     relationTo: 'users';
-    value: number | User;
+    value: string | User;
   };
   updatedAt: string;
   createdAt: string;
@@ -235,10 +235,10 @@ export interface PayloadLockedDocument {
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-  id: number;
+  id: string;
   user: {
     relationTo: 'users';
-    value: number | User;
+    value: string | User;
   };
   key?: string | null;
   value?:
@@ -258,7 +258,7 @@ export interface PayloadPreference {
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-  id: number;
+  id: string;
   name?: string | null;
   batch?: number | null;
   updatedAt: string;

@@ -11,6 +11,7 @@ import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import CapCategory from './collections/CapCategory'
 import  Cap  from './collections/Cap'
+import { mongooseAdapter } from '@payloadcms/db-mongodb';
 
 
 const filename = fileURLToPath(import.meta.url)
@@ -31,10 +32,8 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-  db: sqliteAdapter({
-    client: {
-      url: process.env.DATABASE_URI || '',
-    },
+  db: mongooseAdapter({
+    url: process.env.DATABASE_URI || ''
   }),
   sharp,
   plugins: [
