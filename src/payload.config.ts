@@ -23,7 +23,7 @@ dotenv.config();
 export default buildConfig({
   // serverURL: 'http://localhost:3000',
   serverURL: 'https://cms-coral-beta.vercel.app/',
-  cors: [ "https://cap-sell.vercel.app"],
+  cors: [ "*"],
   // cors: ['http://localhost:3001', "https://cap-sell.vercel.app"],
   admin: {
     user: Users.slug,
