@@ -1,6 +1,5 @@
 import { CollectionConfig } from "payload";
 
-
 const CapCategory: CollectionConfig = {
   slug: 'cap-category',
   admin: {
@@ -23,6 +22,9 @@ const CapCategory: CollectionConfig = {
       name: 'image',
       type: 'upload',
       relationTo: 'media',
+      admin: {
+        condition: (data: any) => !data?.imageUrl,
+      },
     },
     {
       name: 'imageUrl',
@@ -30,7 +32,14 @@ const CapCategory: CollectionConfig = {
       label: 'Image URL (optional)',
       admin: {
         description: 'Select an image from the media library or provide a URL.',
-        condition: (data: any) => !data?.image, // Image na ho to show karo
+        condition: (data: any) => !data?.image,
+      },
+      validate: (value: any, { siblingData }: any) => {
+        // Agar image aur imageUrl dono missing hon, error do
+        if (!value && !siblingData?.image) {
+          return 'You must provide either an image or an image URL.';
+        }
+        return true;
       },
     },
   ],
