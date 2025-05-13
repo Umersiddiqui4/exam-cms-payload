@@ -22,7 +22,8 @@ dotenv.config();
 
 export default buildConfig({
   serverURL: 'http://localhost:3000',
-  cors: ['http://localhost:3001'],
+  cors: [ "https://cap-sell.vercel.app"],
+  // cors: ['http://localhost:3001', "https://cap-sell.vercel.app"],
   admin: {
     user: Users.slug,
     importMap: {
