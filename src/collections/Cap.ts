@@ -11,6 +11,8 @@ const Cap: CollectionConfig = {
   },
   access: {
     read: () => true,
+    create: () => true, // ✅ This line is missing or required
+    update: () => true,
   },
   fields: [
     {
@@ -45,6 +47,9 @@ const Cap: CollectionConfig = {
           required: true,
           admin: {
             description: 'Pick a color',
+            components: {
+              Field: 'color', // 🎨 This adds the color picker
+            },
           },
         },
       ],
