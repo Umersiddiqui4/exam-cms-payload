@@ -10,8 +10,8 @@ const Cap: CollectionConfig = {
     useAsTitle: 'name',
   },
   access: {
-    read: () => true,
-    create: () => true, // ✅ This line is missing or required
+       read: () => true,
+    create: () => true, 
     update: () => true,
   },
   fields: [
