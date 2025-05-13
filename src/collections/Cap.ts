@@ -1,7 +1,7 @@
 // payload/collections/Cap.ts
 
 import { CollectionConfig } from "payload";
-
+import { colorPickerField } from '@innovixx/payload-color-picker-field'
 
 
 const Cap: CollectionConfig = {
@@ -11,7 +11,7 @@ const Cap: CollectionConfig = {
   },
   access: {
        read: () => true,
-    create: () => true, 
+    create: () => true, // ✅ This line is missing or required
     update: () => true,
   },
   fields: [
@@ -41,17 +41,15 @@ const Cap: CollectionConfig = {
           type: 'text',
           required: true,
         },
-        {
+        colorPickerField({
           name: 'value',
-          type: 'text',
+          label: 'text',
           required: true,
           admin: {
+            position: 'sidebar',
             description: 'Pick a color',
-            components: {
-              Field: 'color', // 🎨 This adds the color picker
-            },
           },
-        },
+        }),
       ],
     },
     {

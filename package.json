@@ -15,6 +15,7 @@
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "dependencies": {
+    "@innovixx/payload-color-picker-field": "^2.0.2",
     "@payloadcms/db-mongodb": "^3.37.0",
     "@payloadcms/db-sqlite": "^3.37.0",
     "@payloadcms/next": "^3.37.0",
