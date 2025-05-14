@@ -1,7 +1,7 @@
-// payload/collections/Cap.ts
+"use client"
 
 import { CollectionConfig } from "payload";
-import { colorPickerField } from '@innovixx/payload-color-picker-field'
+
 
 
 const Cap: CollectionConfig = {
@@ -41,15 +41,7 @@ const Cap: CollectionConfig = {
           type: 'text',
           required: true,
         },
-        colorPickerField({
-          name: 'value',
-          label: 'text',
-          required: true,
-          admin: {
-            position: 'sidebar',
-            description: 'Pick a color',
-          },
-        }),
+       
       ],
     },
     {
