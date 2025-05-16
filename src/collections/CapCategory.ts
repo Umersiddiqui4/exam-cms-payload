@@ -24,6 +24,7 @@ const CapCategory: CollectionConfig = {
       name: 'image', // 👇 file/image field (choose one below)
       type: 'upload',
       relationTo: 'media', // 👈 make sure you have a media collection configured
+      required: false, // add this to avoid errors if media is missing
     },
    
   ],
