@@ -7,7 +7,7 @@ const CapCategory: CollectionConfig = {
   },
   access: {
     read: () => true,
-    create: () => true, // ✅ This line is missing or required
+    create: () => true,
     update: () => true,
   },
   fields: [
@@ -21,29 +21,11 @@ const CapCategory: CollectionConfig = {
       type: 'textarea',
     },
     {
-      name: 'image',
+      name: 'image', // 👇 file/image field (choose one below)
       type: 'upload',
-      relationTo: 'media',
-      admin: {
-        condition: (data: any) => !data?.imageUrl,
-      },
+      relationTo: 'media', // 👈 make sure you have a media collection configured
     },
-    {
-      name: 'imageUrl',
-      type: 'text',
-      label: 'Image URL (optional)',
-      admin: {
-        description: 'Select an image from the media library or provide a URL.',
-        condition: (data: any) => !data?.image,
-      },
-      validate: (value: any, { siblingData }: any) => {
-        // Agar image aur imageUrl dono missing hon, error do
-        if (!value && !siblingData?.image) {
-          return 'You must provide either an image or an image URL.';
-        }
-        return true;
-      },
-    },
+   
   ],
 };
 

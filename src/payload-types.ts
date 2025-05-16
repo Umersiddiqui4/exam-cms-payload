@@ -140,7 +140,6 @@ export interface User {
  */
 export interface Media {
   id: string;
-  alt: string;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -162,10 +161,6 @@ export interface CapCategory {
   name: string;
   description?: string | null;
   image?: (string | null) | Media;
-  /**
-   * Select an image from the media library or provide a URL.
-   */
-  imageUrl?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -177,20 +172,12 @@ export interface Cap {
   id: string;
   name: string;
   price: number;
-  colors?:
-    | {
-        name: string;
-        /**
-         * Pick a color
-         */
-        value: string;
-        id?: string | null;
-      }[]
-    | null;
+  color: string;
+  Value: string;
   material?: string | null;
   images?:
     | {
-        url: string;
+        media: string | Media;
         id?: string | null;
       }[]
     | null;
@@ -284,7 +271,6 @@ export interface UsersSelect<T extends boolean = true> {
  * via the `definition` "media_select".
  */
 export interface MediaSelect<T extends boolean = true> {
-  alt?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -305,7 +291,6 @@ export interface CapCategorySelect<T extends boolean = true> {
   name?: T;
   description?: T;
   image?: T;
-  imageUrl?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -317,18 +302,13 @@ export interface CapsSelect<T extends boolean = true> {
   id?: T;
   name?: T;
   price?: T;
-  colors?:
-    | T
-    | {
-        name?: T;
-        value?: T;
-        id?: T;
-      };
+  color?: T;
+  Value?: T;
   material?: T;
   images?:
     | T
     | {
-        url?: T;
+        media?: T;
         id?: T;
       };
   category?: T;

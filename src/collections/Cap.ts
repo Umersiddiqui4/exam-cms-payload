@@ -67,10 +67,12 @@ const Cap: CollectionConfig = {
       type: 'array',
       fields: [
         {
-          name: 'url',
-          type: 'text',
+          name: 'media',
+          type: 'relationship',
+          relationTo: 'media',
           required: true,
         },
+        
       ],
     },
     {
