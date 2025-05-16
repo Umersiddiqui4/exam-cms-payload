@@ -4,5 +4,8 @@ import { withPayload } from '@payloadcms/next/withPayload'
 const nextConfig = {
   // Your Next.js config here
 }
+module.exports = {
+  swcMinify: false,
+}
 
 export default withPayload(nextConfig, { devBundleServerPackages: false })
