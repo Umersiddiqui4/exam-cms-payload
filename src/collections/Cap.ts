@@ -31,33 +31,23 @@ const Cap: CollectionConfig = {
       type: 'number',
       required: true,
     },
+   
     {
-      name: 'color',
-      type: 'text',
-      required: true,
+      name: 'colors',
+      type: 'array',
+      label: 'Available Colors',
+      fields: [
+        colorPickerField({
+          name: 'value',
+          label: 'Color',
+          required: true,
+          admin: {
+            position: 'sidebar',
+            description: 'Pick a color',
+          },
+        }),
+      ],
     },
-    {
-      name: 'Value',
-      type: 'text',
-      required: true,
-    },
-    // {
-    //   name: 'colors',
-    //   type: 'text',
-    //   label: 'Available Colors',
-    //   fields: [
-        
-    //     colorPickerField({
-    //       name: 'value',
-    //       label: 'text',
-    //       required: true,
-    //       admin: {
-    //         position: 'sidebar',
-    //         description: 'Pick a color',
-    //       },
-    //     }),
-    //   ],
-    // },
     {
       name: 'material',
       type: 'text',
