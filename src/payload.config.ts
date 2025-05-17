@@ -16,9 +16,9 @@ import { mongooseAdapter } from '@payloadcms/db-mongodb';
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
-import dotenv from 'dotenv';
-dotenv.config();
-
+// import dotenv from 'dotenv';
+// dotenv.config();
+  
 
 export default buildConfig({
   // serverURL: 'http://localhost:3000',

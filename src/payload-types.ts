@@ -160,7 +160,7 @@ export interface CapCategory {
   id: string;
   name: string;
   description?: string | null;
-  uploadImage?: (string | null) | Media;
+  image?: (string | null) | Media;
   updatedAt: string;
   createdAt: string;
 }
@@ -290,7 +290,7 @@ export interface MediaSelect<T extends boolean = true> {
 export interface CapCategorySelect<T extends boolean = true> {
   name?: T;
   description?: T;
-  uploadImage?: T;
+  image?: T;
   updatedAt?: T;
   createdAt?: T;
 }
