@@ -1,6 +1,6 @@
 import { CollectionConfig } from 'payload';
-import { uploadToCloudinary } from '../utils/cloudinary';
-import type { UploadApiResponse } from 'cloudinary';
+// import { uploadToCloudinary } from '../utils/cloudinary';
+// import type { UploadApiResponse } from 'cloudinary';
 
 export const Media: CollectionConfig = {
   slug: 'media',
@@ -15,28 +15,28 @@ export const Media: CollectionConfig = {
       type: 'text',
     },
   ],
-  hooks: {
-    beforeChange: [
-      async ({ data, req }:any) => {
-        const file = req.files?.file as {
-          data: Buffer;
-          name: string;
-          mimetype: string;
-        };
+  // hooks: {
+  //   beforeChange: [
+  //     async ({ data, req }:any) => {
+  //       const file = req.files?.file as {
+  //         data: Buffer;
+  //         name: string;
+  //         mimetype: string;
+  //       };
 
-        if (file && file.data) {
-          const filename = `media_${Date.now()}`;
+  //       if (file && file.data) {
+  //         const filename = `media_${Date.now()}`;
 
-          const result: any = await uploadToCloudinary(file.data, filename);
+  //         const result: any = await uploadToCloudinary(file.data, filename);
 
-          data.url = result.secure_url;
-          data.public_id = result.public_id;
+  //         data.url = result.secure_url;
+  //         data.public_id = result.public_id;
 
-          delete data.file; // optional: prevent storing locally
-        }
+  //         delete data.file; // optional: prevent storing locally
+  //       }
 
-        return data.url;
-      },
-    ],
-  },
+  //       return data.url;
+  //     },
+  //   ],
+  // },
 };
