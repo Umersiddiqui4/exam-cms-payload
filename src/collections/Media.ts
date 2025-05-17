@@ -15,29 +15,29 @@ export const Media: CollectionConfig = {
       type: 'text',
     },
   ],
-  hooks: {
-    beforeChange: [
-      async ({ data, req }:any) => {
-        const file = req.files?.file as {
-          data: Buffer;
-          name: string;
-          mimetype: string;
-        };
+//   hooks: {
+//     beforeChange: [
+//       async ({ data, req }:any) => {
+//         const file = req.files?.file as {
+//           data: Buffer;
+//           name: string;
+//           mimetype: string;
+//         };
 
-        if (file && file.data) {
-          const filename = `media_${Date.now()}`;
-console.log(file);
+//         if (file && file.data) {
+//           const filename = `media_${Date.now()}`;
+// console.log(file);
 
-          const result: any = await uploadToCloudinary(file.data, filename);
+//           const result: any = await uploadToCloudinary(file.data, filename);
 
-          data.url = result.secure_url;
-          data.public_id = result.public_id;
+//           data.url = result.secure_url;
+//           data.public_id = result.public_id;
 
-          delete data.file; // optional: prevent storing locally
-        }
+//           delete data.file; // optional: prevent storing locally
+//         }
 
-        return data;
-      },
-    ],
-  },
+//         return data;
+//       },
+//     ],
+//   },
 };
