@@ -5,15 +5,15 @@ import { CollectionConfig } from 'payload';
 export const Media: CollectionConfig = {
   slug: 'media',
   fields: [
-    {
-      name: 'url',
-      type: 'text',
-      required: true,
-    },
-    {
-      name: 'public_id',
-      type: 'text',
-    },
+    // {
+    //   name: 'url',
+    //   type: 'text',
+    //   required: true,
+    // },
+    // {
+    //   name: 'public_id',
+    //   type: 'text',
+    // },
   ],
   // hooks: {
   //   beforeChange: [
