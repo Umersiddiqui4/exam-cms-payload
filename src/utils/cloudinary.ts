@@ -16,12 +16,12 @@ export default cloudinary;
 import fs from 'fs'
 import path from 'path'
 
-export const uploadToCloudinary = async ({ doc }) => {
+export const uploadToCloudinary = async ({ doc }: any) => {
   if (!doc.filename) return doc;
 
   const filePath = path.resolve(__dirname, `../../media/${doc.filename}`)
 
-  const result = await new Promise((resolve, reject) => {
+  const result: any = await new Promise((resolve, reject) => {
     cloudinary.uploader.upload(filePath, {
       resource_type: 'auto',
       public_id: doc.filename,
