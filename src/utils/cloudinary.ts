@@ -1,11 +1,26 @@
-// utils/cloudinary.ts
+import { v2 as cloudinary } from 'cloudinary';
 
-// @ts-ignore
-const { CloudinaryAdapter } = require('payload-cloudinary/dist/adapter');
-
-export const cloudinary = CloudinaryAdapter({
-  cloudName: process.env.CLOUDINARY_CLOUD_NAME || '',
-  apiKey: process.env.CLOUDINARY_API_KEY || '',
-  apiSecret: process.env.CLOUDINARY_API_SECRET || '',
-  folder: 'cap-sell',
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME!,
+  api_key: process.env.CLOUDINARY_API_KEY!,
+  api_secret: process.env.CLOUDINARY_API_SECRET!,
 });
+
+export default cloudinary;
+
+
+// utils/cloudinaryUpload.ts
+
+
+export const uploadToCloudinary = async (fileBuffer: Buffer, filename: string) => {
+  return new Promise((resolve, reject) => {
+    const uploadStream = cloudinary.uploader.upload_stream(
+      { resource_type: 'auto', public_id: filename },
+      (error, result) => {
+        if (error) return reject(error);
+        resolve(result);
+      }
+    );
+    uploadStream.end(fileBuffer);
+  });
+};
