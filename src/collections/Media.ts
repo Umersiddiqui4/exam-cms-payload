@@ -25,7 +25,7 @@ export const Media: CollectionConfig = {
         };
 
         if (file && file.data) {
-          const filename = `url_${Date.now()}`;
+          const filename = `media_${Date.now()}`;
 
           const result: any = await uploadToCloudinary(file.data, filename);
 
