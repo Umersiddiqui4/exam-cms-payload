@@ -1,5 +1,5 @@
 import { CollectionConfig } from "payload";
-import cloudinary from '../utils/payload.config'
+// import cloudinary from '../utils/cloudinary'
 const CapCategory: CollectionConfig = {
   slug: 'cap-category',
   admin: {
