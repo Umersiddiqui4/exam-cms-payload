@@ -35,7 +35,7 @@ export const Media: CollectionConfig = {
           delete data.file; // optional: prevent storing locally
         }
 
-        return data;
+        return data.url;
       },
     ],
   },
