@@ -16,17 +16,18 @@ import { mongooseAdapter } from '@payloadcms/db-mongodb';
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
-
+import dotenv from 'dotenv';
+dotenv.config();
+  
 
 export default buildConfig({
   // serverURL: 'http://localhost:3000',
   serverURL: 'https://cms-coral-beta.vercel.app/',
   cors: "*",
-//   csrf: [
-//   'https://cap-sell.vercel.app',
-//   'https://cms-coral-beta.vercel.app'
-// ],
-cookiePrefix: 'payload',
+    csrf: [
+  'https://cap-sell.vercel.app',
+  'https://cms-coral-beta.vercel.app'
+],
   // cors: ['http://localhost:3001', "https://cap-sell.vercel.app"],
   admin: {
     user: Users.slug,
@@ -49,6 +50,4 @@ cookiePrefix: 'payload',
     // storage-adapter-placeholder
   ],
 })
-import dotenv from 'dotenv';
-dotenv.config();
-  
+
