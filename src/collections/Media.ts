@@ -1,15 +1,19 @@
+// collections/Media.ts
 import { CollectionConfig } from 'payload';
+import { uploadToCloudinary } from '../utils/cloudinary';
 
-export const Media: CollectionConfig = {
+const Media: CollectionConfig = {
   slug: 'media',
-  upload: {
-    disableLocalStorage: true,
-    staticDir: 'media', // ignored due to cloudinary
+  upload: true,
+  hooks: {
+    afterChange: [uploadToCloudinary],
   },
-  admin: {
-    useAsTitle: 'filename',
-  },
-  fields: [],
+  fields: [
+    {
+      name: 'cloudinaryURL',
+      type: 'text',
+    },
+  ],
 };
 
-
+export { Media };
