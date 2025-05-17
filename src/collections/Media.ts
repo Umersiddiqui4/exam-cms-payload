@@ -4,7 +4,9 @@ import { uploadToCloudinary } from '../utils/cloudinary';
 
 const Media: CollectionConfig = {
   slug: 'media',
-  upload: true,
+  upload:{
+    disableLocalStorage: true,
+  },
   hooks: {
     afterChange: [uploadToCloudinary],
   },
