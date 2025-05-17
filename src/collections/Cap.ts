@@ -31,15 +31,25 @@ const Cap: CollectionConfig = {
       type: 'number',
       required: true,
     },
-   
+    {
+      name: 'color',
+      type: 'text',
+      required: true,
+    },
+    {
+      name: 'Value',
+      type: 'text',
+      required: true,
+    },
     {
       name: 'colors',
       type: 'array',
       label: 'Available Colors',
       fields: [
+        
         colorPickerField({
           name: 'value',
-          label: 'Color',
+          label: 'text',
           required: true,
           admin: {
             position: 'sidebar',
