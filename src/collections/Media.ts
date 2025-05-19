@@ -1,6 +1,7 @@
 // collections/Media.ts
+import { uploadToCloudinary } from '@/hooks/uploadToCloudinary';
 import { CollectionConfig } from 'payload';
-import { uploadToCloudinary } from '../utils/cloudinary';
+
 
 const Media: CollectionConfig = {
   slug: 'media',
