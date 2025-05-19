@@ -1,15 +1,15 @@
-// collections/Media.ts
-import { uploadToCloudinary } from '@/hooks/uploadToCloudinary';
-import { CollectionConfig } from 'payload';
+// import { uploadToBlobHook } from '@/hooks/uploadToBlobHook';
 
+import { uploadToBlobHook } from "@/hooks/uploadToBlob";
+import { CollectionConfig } from "payload";
 
-const Media: CollectionConfig = {
+export  const Media: CollectionConfig = {
   slug: 'media',
-  upload:{
-    disableLocalStorage: true,
+  upload: {
+    disableLocalStorage: false,
   },
   hooks: {
-    afterChange: [uploadToCloudinary],
+    afterChange: [uploadToBlobHook],
   },
   fields: [
     {
@@ -18,5 +18,3 @@ const Media: CollectionConfig = {
     },
   ],
 };
-
-export { Media };
