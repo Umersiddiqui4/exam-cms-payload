@@ -22,13 +22,13 @@ dotenv.config();
   
 
 export default buildConfig({
-  serverURL: 'http://localhost:3000',
-  // serverURL: 'https://cms-coral-beta.vercel.app/',
+  // serverURL: 'http://localhost:3000',
+  serverURL: 'https://cms-coral-beta.vercel.app/',
   cors: "*",
-//     csrf: [
-//   'https://cap-sell.vercel.app',
-//   'https://cms-coral-beta.vercel.app'
-// ],
+    csrf: [
+  'https://cap-sell.vercel.app',
+  'https://cms-coral-beta.vercel.app'
+],
   // cors: ['http://localhost:3001', "https://cap-sell.vercel.app"],
   admin: {
     user: Users.slug,
@@ -42,9 +42,7 @@ export default buildConfig({
       enabled: true, // Optional, defaults to true
       // Specify which collections should use Vercel Blob
       collections: {
-         media: {
-        prefix: 'cap-images',
-      },
+        media: true,
       },
       // Token provided by Vercel once Blob storage is added to your Vercel project
       token: process.env.BLOB_READ_WRITE_TOKEN,
