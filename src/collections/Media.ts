@@ -14,10 +14,5 @@ export  const Media: CollectionConfig = {
   hooks: {
     afterChange: [uploadToBlobHook],
   },
-  fields: [
-    {
-      name: 'cloudinaryURL',
-      type: 'text',
-    },
-  ],
+  fields: [],
 };
