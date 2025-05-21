@@ -10,16 +10,7 @@ export  const Media: CollectionConfig = {
     create: () => true,
     update: () => true,
   },
-  upload: {
-    disableLocalStorage: false,
-  },
-  hooks: {
-    afterChange: [uploadToBlobHook],
-  },
-  fields: [
-    {
-      name: 'cloudinaryURL',
-      type: 'text',
-    },
-  ],
+  upload: true,
+
+  fields: [],
 };
