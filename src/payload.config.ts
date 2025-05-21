@@ -21,13 +21,13 @@ dotenv.config();
   
 
 export default buildConfig({
-  serverURL: 'http://localhost:3000',
-  // serverURL: 'https://cms-coral-beta.vercel.app/',
+  // serverURL: 'http://localhost:3000',
+  serverURL: 'https://cms-coral-beta.vercel.app/',
   cors: "*",
-//     csrf: [
-//   'https://cap-sell.vercel.app',
-//   'https://cms-coral-beta.vercel.app'
-// ],
+    csrf: [
+  'https://cap-sell.vercel.app',
+  'https://cms-coral-beta.vercel.app'
+],
   // cors: ['http://localhost:3001', "https://cap-sell.vercel.app"],
   admin: {
     user: Users.slug,
