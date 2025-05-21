@@ -11,6 +11,8 @@ export  const Media: CollectionConfig = {
     update: () => true,
   },
   upload: true,
-
+  hooks: {
+    afterChange: [uploadToBlobHook],
+  },
   fields: [],
 };
