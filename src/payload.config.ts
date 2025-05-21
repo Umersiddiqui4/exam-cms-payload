@@ -12,6 +12,7 @@ import { Media } from './collections/Media'
 import CapCategory from './collections/CapCategory'
 import  Cap  from './collections/Cap'
 import { mongooseAdapter } from '@payloadcms/db-mongodb';
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob';
 
 
 const filename = fileURLToPath(import.meta.url)
@@ -36,6 +37,15 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, CapCategory, Cap],
+   plugins: [
+    vercelBlobStorage({
+      enabled: true,
+      collections: {
+        media: true,
+      },
+      token: process.env.BLOB_READ_WRITE_TOKEN,
+    }),
+  ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -45,9 +55,5 @@ export default buildConfig({
       url: process.env.DATABASE_URI || '', 
   }),
   sharp,
-  plugins: [
-    payloadCloudPlugin(),
-    // storage-adapter-placeholder
-  ],
 })
 

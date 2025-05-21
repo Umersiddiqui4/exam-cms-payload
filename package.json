@@ -21,6 +21,7 @@
     "@payloadcms/next": "^3.37.0",
     "@payloadcms/payload-cloud": "^3.37.0",
     "@payloadcms/richtext-lexical": "^3.37.0",
+    "@payloadcms/storage-vercel-blob": "^3.38.0",
     "@vercel/blob": "^1.0.1",
     "cloudinary": "^2.6.1",
     "cross-env": "^7.0.3",
