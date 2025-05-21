@@ -140,6 +140,7 @@ export interface User {
  */
 export interface Media {
   id: string;
+  cloudinaryURL?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -173,7 +174,15 @@ export interface Cap {
   name: string;
   price: number;
   color: string;
-  Value: string;
+  colors?:
+    | {
+        /**
+         * Pick a color
+         */
+        value: string;
+        id?: string | null;
+      }[]
+    | null;
   material?: string | null;
   images?:
     | {
@@ -271,6 +280,7 @@ export interface UsersSelect<T extends boolean = true> {
  * via the `definition` "media_select".
  */
 export interface MediaSelect<T extends boolean = true> {
+  cloudinaryURL?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -303,7 +313,12 @@ export interface CapsSelect<T extends boolean = true> {
   name?: T;
   price?: T;
   color?: T;
-  Value?: T;
+  colors?:
+    | T
+    | {
+        value?: T;
+        id?: T;
+      };
   material?: T;
   images?:
     | T

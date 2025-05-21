@@ -37,11 +37,6 @@ const Cap: CollectionConfig = {
       required: true,
     },
     {
-      name: 'Value',
-      type: 'text',
-      required: true,
-    },
-    {
       name: 'colors',
       type: 'array',
       label: 'Available Colors',
