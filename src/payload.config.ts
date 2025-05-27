@@ -9,8 +9,6 @@ import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
-import CapCategory from './collections/CapCategory'
-import  Cap  from './collections/Cap'
 import { mongooseAdapter } from '@payloadcms/db-mongodb';
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob';
 
@@ -18,12 +16,14 @@ import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob';
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 import dotenv from 'dotenv';
+import Exams from './collections/Exam'
+import Applications from './collections/Application'
 dotenv.config();
   
 
 export default buildConfig({
-  // serverURL: 'http://localhost:3000',
-  serverURL: 'https://cms-coral-beta.vercel.app/',
+  serverURL: 'http://localhost:3000',
+  // serverURL: 'https://cms-coral-beta.vercel.app/',
   cors: "*",
     csrf: [
   'https://cap-sell.vercel.app',
@@ -36,7 +36,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, CapCategory, Cap],
+  collections: [Users, Media, Exams, Applications],
    plugins: [
     vercelBlobStorage({
       enabled: true, // Optional, defaults to true

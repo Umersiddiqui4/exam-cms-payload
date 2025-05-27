@@ -69,8 +69,8 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
-    'cap-category': CapCategory;
-    caps: Cap;
+    exams: Exam;
+    applications: Application;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -79,8 +79,8 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    'cap-category': CapCategorySelect<false> | CapCategorySelect<true>;
-    caps: CapsSelect<false> | CapsSelect<true>;
+    exams: ExamsSelect<false> | ExamsSelect<true>;
+    applications: ApplicationsSelect<false> | ApplicationsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -154,43 +154,78 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "cap-category".
+ * via the `definition` "exams".
  */
-export interface CapCategory {
+export interface Exam {
   id: string;
   name: string;
-  description?: string | null;
-  image?: (string | null) | Media;
+  location: string;
+  applicationsDateRange: {
+    from: string;
+    to: string;
+  };
+  applicationsLimit: string;
+  waitingLimit: string;
+  slot1DateRange: {
+    from: string;
+    to: string;
+  };
+  slot2DateRange?: {
+    from?: string | null;
+    to?: string | null;
+  };
+  slot3DateRange?: {
+    from?: string | null;
+    to?: string | null;
+  };
+  formLink?: string | null;
+  isBlocked?: boolean | null;
+  receivingApplicationsCount?: number | null;
   updatedAt: string;
   createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "caps".
+ * via the `definition` "applications".
  */
-export interface Cap {
+export interface Application {
   id: string;
-  name: string;
-  price: number;
-  color: string;
-  colors?:
-    | {
-        /**
-         * Pick a color
-         */
-        value: string;
-        id?: string | null;
-      }[]
-    | null;
-  material?: string | null;
-  images?:
-    | {
-        media: string | Media;
-        id?: string | null;
-      }[]
-    | null;
-  category: string | CapCategory;
-  inStock?: boolean | null;
+  applicantName: string;
+  examId: string | Exam;
+  examName: string;
+  status: 'pending' | 'waiting' | 'approved' | 'rejected';
+  date?: string | null;
+  submittedDate?: string | null;
+  pdfUrl?: string | null;
+  name?: string | null;
+  candidateId: string;
+  passportUrl?: (string | null) | Media;
+  fullName: string;
+  poBox: string;
+  district: string;
+  city: string;
+  province: string;
+  country: string;
+  whatsapp: string;
+  emergencyContact: string;
+  email: string;
+  dateOfPassingPart1: string;
+  previousOsceAttempts: string;
+  countryOfExperience: string;
+  countryOfOrigin: string;
+  registrationAuthority: string;
+  registrationNumber: string;
+  dateOfRegistration: string;
+  preferenceDate1?: string | null;
+  preferenceDate2?: string | null;
+  preferenceDate3?: string | null;
+  part1EmailUrl?: (string | null) | Media;
+  medicalLicenseUrl: string | Media;
+  passportBioUrl: string | Media;
+  signatureUrl: string | Media;
+  agreementName?: string | null;
+  agreementDate: string;
+  termsAgreed: boolean;
   updatedAt: string;
   createdAt: string;
 }
@@ -210,12 +245,12 @@ export interface PayloadLockedDocument {
         value: string | Media;
       } | null)
     | ({
-        relationTo: 'cap-category';
-        value: string | CapCategory;
+        relationTo: 'exams';
+        value: string | Exam;
       } | null)
     | ({
-        relationTo: 'caps';
-        value: string | Cap;
+        relationTo: 'applications';
+        value: string | Application;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -293,39 +328,84 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "cap-category_select".
+ * via the `definition` "exams_select".
  */
-export interface CapCategorySelect<T extends boolean = true> {
+export interface ExamsSelect<T extends boolean = true> {
   name?: T;
-  description?: T;
-  image?: T;
+  location?: T;
+  applicationsDateRange?:
+    | T
+    | {
+        from?: T;
+        to?: T;
+      };
+  applicationsLimit?: T;
+  waitingLimit?: T;
+  slot1DateRange?:
+    | T
+    | {
+        from?: T;
+        to?: T;
+      };
+  slot2DateRange?:
+    | T
+    | {
+        from?: T;
+        to?: T;
+      };
+  slot3DateRange?:
+    | T
+    | {
+        from?: T;
+        to?: T;
+      };
+  formLink?: T;
+  isBlocked?: T;
+  receivingApplicationsCount?: T;
   updatedAt?: T;
   createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "caps_select".
+ * via the `definition` "applications_select".
  */
-export interface CapsSelect<T extends boolean = true> {
-  id?: T;
+export interface ApplicationsSelect<T extends boolean = true> {
+  applicantName?: T;
+  examId?: T;
+  examName?: T;
+  status?: T;
+  date?: T;
+  submittedDate?: T;
+  pdfUrl?: T;
   name?: T;
-  price?: T;
-  color?: T;
-  colors?:
-    | T
-    | {
-        value?: T;
-        id?: T;
-      };
-  material?: T;
-  images?:
-    | T
-    | {
-        media?: T;
-        id?: T;
-      };
-  category?: T;
-  inStock?: T;
+  candidateId?: T;
+  passportUrl?: T;
+  fullName?: T;
+  poBox?: T;
+  district?: T;
+  city?: T;
+  province?: T;
+  country?: T;
+  whatsapp?: T;
+  emergencyContact?: T;
+  email?: T;
+  dateOfPassingPart1?: T;
+  previousOsceAttempts?: T;
+  countryOfExperience?: T;
+  countryOfOrigin?: T;
+  registrationAuthority?: T;
+  registrationNumber?: T;
+  dateOfRegistration?: T;
+  preferenceDate1?: T;
+  preferenceDate2?: T;
+  preferenceDate3?: T;
+  part1EmailUrl?: T;
+  medicalLicenseUrl?: T;
+  passportBioUrl?: T;
+  signatureUrl?: T;
+  agreementName?: T;
+  agreementDate?: T;
+  termsAgreed?: T;
   updatedAt?: T;
   createdAt?: T;
 }
