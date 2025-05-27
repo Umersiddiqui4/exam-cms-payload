@@ -17,8 +17,8 @@ dotenv.config();
   
 
 export default buildConfig({
-  serverURL: 'http://localhost:3000',
-  // serverURL: 'https://cms-coral-beta.vercel.app/',
+  // serverURL: 'http://localhost:3000',
+  serverURL: 'https://exam-cms-payload.vercel.app/',
   cors: "*",
     csrf: [
   'https://cap-sell.vercel.app',
