@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { put } from '@vercel/blob';
+// import { put } from '@vercel/blob';
 // import type { AfterChangeHook } from '@pay'; // ✅ correct hook type
 import { uploadToBlob } from '@/utils/blob';
 // import { AfterChangeHook } from 'node_modules/payload/dist/globals/config/types';
