@@ -19,12 +19,12 @@ dotenv.config();
 export default buildConfig({
   // serverURL: 'http://localhost:3000',
   serverURL: 'https://exam-cms-payload.vercel.app/',
-  cors: "*",
+  // cors: "*",
     csrf: [
   'https://cap-sell.vercel.app',
   'https://cms-coral-beta.vercel.app'
 ],
-  // cors: ['http://localhost:3001', "https://cap-sell.vercel.app"],
+  cors: ['http://localhost:3001', "https://exam-frontend-payload-pb3w.vercel.app"],
   admin: {
     user: Users.slug,
     importMap: {
