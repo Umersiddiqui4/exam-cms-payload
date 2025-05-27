@@ -24,7 +24,7 @@ export default buildConfig({
   'https://exam-frontend-payload-pb3w.vercel.app',
   'https://exam-cms-payload.vercel.app'
 ],
-  cors: ['http://localhost:3001', "https://exam-frontend-payload-pb3w.vercel.app"],
+  cors: ['http://localhost:5173', "https://exam-frontend-payload-pb3w.vercel.app"],
   admin: {
     user: Users.slug,
     importMap: {
